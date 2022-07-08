@@ -5,7 +5,7 @@ const { getAllApis, getApiWeb, getApiDb } = require('./commonsController')
 
 async function getDogs (req, res){
     const { name } = req.query
-    const data = getAllApis()
+    let data = await getAllApis()
     try {
         if (name){
             let search = await axios(`https://api.thedogapi.com/v1/breeds/search?q=${name}`)
@@ -51,8 +51,48 @@ async function getDogs (req, res){
     }
 }
 
+async function getById (req, res){
+    const { id } = req.params
+    try {
+        if (!id) {
+            return res.status(404).json({error: "ID don't match with none dog"})
+        } else {
+            let search = await getAllApis()
+            let searchFind = search.find(d => id === d.id.toString())
+            res.status(201).json(searchFind)
+        }
+    } catch (error) {
+        res.status(404).json({error: "ID don't match with none dog"})
+    }
+}
+
+
+async function createDog (req, res){
+    const { name, heightMax, heightMin, weightMax, weightMin, life_span, temperament, image } = req.body
+    try {
+        if (!image){
+            image = await axios("https://dog.ceo/api/breeds/image/random").data.message
+        }
+        const dogNew = await Dog.create({
+            name, heightMax, heightMin, weightMax, weightMin, life_span, image
+        })
+        const temperaments = await Temperament.findAll({
+            where: {
+                name: temperament
+            }
+        })
+        dogNew.addTemperament(temperaments)
+        res.status(201).json({msg: "Dog created succesfully!"} )
+    } catch (error) {
+        res.status(404).json({error: "An error has ocurred, please try again later"})
+    }
+}
 
 
 
 
-module.exports = {  }
+module.exports = {
+    getDogs,
+    getById,
+    createDog
+}
