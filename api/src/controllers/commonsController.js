@@ -1,4 +1,4 @@
-const { Dogs, Temperaments } = require('../db.js')
+const { Dog, Temperament } = require('../db.js')
 const { API_KEY } = process.env
 const axios = require("axios")
 
@@ -22,7 +22,7 @@ async function getApiWeb () {
 }
 
 async function getApiDb () {
-    const apiDb = await Dog.findAll({
+    return await Dog.findAll({
         include: {
             model: Temperament,
             attributes: ['name'],
@@ -31,7 +31,6 @@ async function getApiDb () {
             }
         }
     })
-    return apiDb
 }
 
 async function getAllApis () {
