@@ -15,6 +15,7 @@ export default function SearchBar () {
     function handleSubmit (e){
         e.preventDefault()
         dispatch(getDogsByName(name))
+        setName("")
     }
 
     
