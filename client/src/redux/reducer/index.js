@@ -47,20 +47,52 @@ export default function rootReducer (state = initialState, action){
                 details: action.payload
             }
         case FILTER_BY_TEMPERAMENT:
+            const allDogs = state.allDogs
+            const temperamentFilter = action.payload === "all" ? allDogs : allDogs.filter(t => {
+                return t.temperaments
+                    .toString()
+                    .split(",")
+                    .join(", ")
+                    .include(action.payload)
+            })
             return {
-                
+                ...state,
+                dogs: temperamentFilter
             }
         case FILTER_BY_ORIGIN:
+            const allDogsOrigin = state.allDogs
+            const originFilter = action.payload === "all" ? allDogsOrigin : "Created" ? allDogsOrigin.filter(d => d.created) : allDogsOrigin.filter(d => !d.created)
             return {
-
+                ...state,
+                dogs: originFilter
             }
         case SORT_BY_NAME:
+            const sortedAbc = action.payload === "asc" ? 
+            state.dogs.sort((a, b) => {
+                if (a.name.toLowerCase() > b.name.toLowerCase()) return 1
+                if (a.name.toLowerCase() < b.name.toLowerCase()) return -1
+                return 0
+            }) :
+            state.dogs.sort((a, b) => {
+                if (a.name.toLowerCase() > b.name.toLowerCase()) return -1
+                if (a.name.toLowerCase() < b.name.toLowerCase()) return 1
+                return 0
+            })
             return {
-
+                ...state,
+                dogs: sortedAbc
             }
         case SORT_BY_WEIGHT:
+            const sortedWeight = action.payload === "asc" ?
+            state.dogs.sort ((a, b) => {
+                return a.weightMin - b.weightMin
+            }) :
+            state.dogs.sort((a, b) => {
+                return b.weightMax - a.weightMax
+            })
             return {
-
+                ...state,
+                dogs: sortedWeight
             }
 
         default:
