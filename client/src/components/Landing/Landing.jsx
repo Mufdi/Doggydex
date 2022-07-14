@@ -5,7 +5,7 @@ import styles from "./Landing.module.css"
 export default function Landing () {
     return (
         <div className={styles.container}>
-            <h1 className={styles.title}>Welcome to the Doggy Space!!</h1>
+            <h1 className={styles.title}>Welcome to the DoggyDex!!</h1>
             <Link to="/dogs">
                 <button className={styles.button}>HOME</button>
             </Link>

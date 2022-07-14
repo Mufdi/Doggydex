@@ -61,7 +61,7 @@ export default function rootReducer (state = initialState, action){
             }
         case FILTER_BY_ORIGIN:
             const allDogsOrigin = state.allDogs
-            const originFilter = action.payload === "all" ? allDogsOrigin : "Created" ? allDogsOrigin.filter(d => d.created) : allDogsOrigin.filter(d => !d.created)
+            const originFilter = action.payload === "all" ? allDogsOrigin : "created" ? allDogsOrigin.filter(d => d.created) : allDogsOrigin.filter(d => !d.created)
             return {
                 ...state,
                 dogs: originFilter
