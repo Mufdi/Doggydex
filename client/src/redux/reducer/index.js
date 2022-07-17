@@ -29,7 +29,7 @@ export default function rootReducer (state = initialState, action){
         case GET_BY_NAME:
             return {
                 ...state,
-                allDogs: action.payload
+                dogs: action.payload
             }
         case GET_TEMPERAMENTS:
             return {
@@ -49,11 +49,14 @@ export default function rootReducer (state = initialState, action){
         case FILTER_BY_TEMPERAMENT:
             const allDogs = state.allDogs
             const temperamentFilter = action.payload === "all" ? allDogs : allDogs.filter(t => {
-                return t.temperaments
-                    .toString()
-                    .split(",")
-                    .join(", ")
-                    .include(action.payload)
+                console.log(t.temperament);
+                if (typeof(t.temperament) === "string"){
+                    return t.temperament.includes(action.payload)
+                } else if (Array.isArray(t.temperament)){
+                    let temperamentArray = t.temperament.map(t => t.name)
+                    return temperamentArray.includes(action.payload)
+                }
+                return true
             })
             return {
                 ...state,
@@ -61,7 +64,7 @@ export default function rootReducer (state = initialState, action){
             }
         case FILTER_BY_ORIGIN:
             const allDogsOrigin = state.allDogs
-            const originFilter = action.payload === "all" ? allDogsOrigin : "created" ? allDogsOrigin.filter(d => d.created) : allDogsOrigin.filter(d => !d.created)
+            const originFilter = action.payload === "all" ? allDogsOrigin : action.payload === "created" ? allDogsOrigin.filter(d => d.created) : allDogsOrigin.filter(d => !d.created)
             return {
                 ...state,
                 dogs: originFilter

@@ -23,11 +23,10 @@ export function getDogs (){
 
 export function getDogsByName (name){
     return async function (dispatch){
-        var json = await axios(`http://localhost:3001/dogs?name=${name}`)
-        return dispatch ({
-            type: GET_BY_NAME,
-            payload: json.data
-        })
+        return axios.get('http://localhost:3001/dogs?name=' + name)
+                    .then(res => dispatch({ type: GET_BY_NAME, payload: res.data }))
+                    .catch(err => dispatch({type: GET_BY_NAME, payload: err.data}))
+        
     }
 }
 
@@ -43,7 +42,7 @@ export function getTemperaments (){
 
 export function postDog (payload){
     return async function (dispatch){
-        var json = await axios.post(`http://localhost:3001/dog/create`, payload)
+        var json = await axios.post(`http://localhost:3001/dogs/create`, payload)
         return dispatch ({
             type: POST_DOG,
             payload: json.data
@@ -53,7 +52,7 @@ export function postDog (payload){
 
 export function getDetail (id){
     return async function (dispatch){
-        var json = await axios(`http://localhost:3001/dog/${id}`)
+        var json = await axios(`http://localhost:3001/dogs/${id}`)
         return dispatch ({
             type: GET_DETAIL,
             payload: json.data

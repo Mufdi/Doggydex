@@ -1,5 +1,5 @@
 import React from "react";
-import { useEfect } from "react"
+import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getDetail } from "../../redux/actions";
@@ -10,7 +10,7 @@ import styles from "./Detail.module.css"
 export default function Detail (props) {
     const dispatch = useDispatch()
 
-    useEfect(() => {
+    useEffect(() => {
         dispatch(getDetail(props.match.params.id))
     }, [dispatch])
     

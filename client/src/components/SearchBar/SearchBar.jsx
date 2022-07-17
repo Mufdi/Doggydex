@@ -9,6 +9,7 @@ export default function SearchBar () {
     const [name, setName] = useState("")
 
     function handleSearchChange (e){
+        e.preventDefault()
         setName(e.target.value)
     }
 
@@ -28,6 +29,7 @@ export default function SearchBar () {
                     type="text"
                     placeholder="Search a dog..."
                     onChange={e => handleSearchChange(e)}
+                    value={name}
                 />
                 <button 
                     className={styles.button}

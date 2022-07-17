@@ -13,12 +13,12 @@ async function getDogs (req, res){
                 return {
                     id: d.id,
                     name: d.name,
-                    image: d.image,
-                    heightMin: d.height.metric.split(" - ")[0],
-                    heightMax: d.height.metric.split(" - ")[1] ? d.height.metric.split(" - ")[1] : d.height.metric.split(" - ")[0],
+                    image: d.reference_image_id ? `https://cdn2.thedogapi.com/images/${d.reference_image_id}.jpg` : "https://images.dog.ceo/breeds/schipperke/n02104365_7381.jpg",
+                    // heightMin: d.height.metric.split(" - ")[0],
+                    // heightMax: d.height.metric.split(" - ")[1] ? d.height.metric.split(" - ")[1] : d.height.metric.split(" - ")[0],
                     weightMin: d.weight.metric.split(" - ")[0],
                     weightMax: d.weight.metric.split(" - ")[1] ? d.weight.metric.split(" - ")[1] : d.weight.metric.split(" - ")[0],
-                    life_span: d.life_span,
+                    // life_span: d.life_span,
                     temperament: d.temperament
                 }
             })
@@ -29,18 +29,18 @@ async function getDogs (req, res){
                     id: d.id,
                     name: d.name,
                     image: d.image,
-                    heightMin: d.height.metric.split(" - ")[0],
-                    heightMax: d.height.metric.split(" - ")[1] ? d.height.metric.split(" - ")[1] : d.height.metric.split(" - ")[0],
+                    // heightMin: d.height.metric.split(" - ")[0],
+                    // heightMax: d.height.metric.split(" - ")[1] ? d.height.metric.split(" - ")[1] : d.height.metric.split(" - ")[0],
                     weightMin: d.weight.metric.split(" - ")[0],
                     weightMax: d.weight.metric.split(" - ")[1] ? d.weight.metric.split(" - ")[1] : d.weight.metric.split(" - ")[0],
-                    life_span: d.life_span,
+                    // life_span: d.life_span,
                     temperament: d.temperament
                 }
             })
             let dogSearched = searchDb.concat(apiSearch)
             if (!dogSearched.length) {
                 res.status(404).json({error: "Dog not found"})
-            } else{
+            } else if (dogSearched){
                 res.status(201).json(dogSearched)
             }
         } else{

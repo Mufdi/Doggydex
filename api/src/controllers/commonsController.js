@@ -9,7 +9,7 @@ async function getApiWeb () {
         return {
             id: d.id,
             name: d.name,
-            image: d.image,
+            image: d.image.url,
             heightMin: d.height.metric.split(" - ")[0],
             heightMax: d.height.metric.split(" - ")[1] ? d.height.metric.split(" - ")[1] : d.height.metric.split(" - ")[0],
             weightMin: d.weight.metric.split(" - ")[0],

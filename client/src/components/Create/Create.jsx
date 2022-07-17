@@ -10,57 +10,76 @@ function validation (input){
     let errors = {}
     if (!input.name){
         errors.name = "You must write a name"
+        // return errors
     } else if (input.name.length > 20){
         errors.name = "The name is too long"
+        // return errors
     } else {
         errors.name = ""
     }
     if (!input.heightMin){
         errors.heightMin = "You must set the heigth"
+        // return errors
     } else if (isNaN(input.heightMin)){
         errors.heightMin = "You must write a number"
+        // return errors
     } else if (input.heightMin <= 2){
         errors.heightMin = "The breed can't be that small"
+        // return errors
     } else if (input.heightMin >= input.heightMax){
         errors.heightMin = "Min height cannot be greater or equal than the max height"
+        // return errors
     } else {
         errors.heightMin = ""
     }
     if (isNaN(input.heightMax)){
         errors.heightMax = "You must write a number"
-    } else if (input.heightMax <= 201){
+        // return errors
+    } else if (input.heightMax >= 201){
         errors.heightMax = "The breed can't be that tall"
+        // return errors
     } else if (input.heightMax <= input.heightMin){
         errors.heightMax = "Max height cannot be less than or equal to min height"
+        // return errors
     } else {
         input.heightMax = ""
     }
     if (!input.weightMin){
         errors.weightMin = "You must set a weight"
+        // return errors
     } else if (isNaN(input.weightMin)){
         errors.weightMin = "You must write a number"
+        // return errors
     } else if (input.weightMin <= 0){
         errors.weightMin = "The breed can't be that light"
+        // return errors
     } else if (input.weightMin >= input.weightMax){
         errors.weightMin = "Min weight cannot be greater or equal than the max weight"
+        // return errors
     } else {
         errors.weightMin = ""
     }
     if (isNaN(input.weightMax)){
         errors.heightMax = "You must write a number"
+        // return errors
     } else if (input.weightMax >= 200){
         errors.weightMax = "The breed can't be that heavy"
+        // return errors
     } else if (input.weightMax <= input.weightMin){
         errors.weightMax = "Max weight cannot be less than or equal to min weight"
+        // return errors
     } else {
         errors.weightMax = ""
     }
     if (isNaN(input.life_span)){
         errors.life_span = "You must write a number"
+        // return errors
     } else if (input.life_span <= 0){
         errors.life_span = "The life span can't be less than 1 year"
+        // return errors
     } else if (input.life_span >= 50){
         errors.life_span = "Unfortunately your breed cannot be so long-lived"
+        // return errors
     }
     return errors
 }
@@ -117,7 +136,12 @@ export default function Create () {
     function handleSubmit(e){
         e.preventDefault()
         if (
-            !Object.getOwnPropertyNames(errors) &&
+            !errors.name &&
+            !errors.heightMin &&
+            !errors.heightMax &&
+            !errors.weightMin &&
+            !errors.weightMax &&
+            !errors.life_span &&
             input.name &&
             input.heightMin &&
             input.weightMin

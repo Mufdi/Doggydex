@@ -14,7 +14,7 @@ export default function Home () {
     const allDogs = useSelector(state => state.dogs)
     const allTemperaments = useSelector(state => state.temperaments)
 
-    const [setOrder] = useState("")
+    const [/*_orden*/, setOrder] = useState("")
 
     //PAGINADO
 
@@ -79,7 +79,7 @@ export default function Home () {
                 </div>
                 <div className={styles.menuElement}>
                     <select onChange={e => handleTempFilter(e)}>
-                        <option key="0" value ="all">Temperaments</option>
+                        <option key={0} value ="all">Temperaments</option>
                         {
                             allTemperaments?.sort((a, b) => {
                                 if (a.name > b.name) return 1
