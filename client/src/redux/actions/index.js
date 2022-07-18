@@ -23,10 +23,15 @@ export function getDogs (){
 
 export function getDogsByName (name){
     return async function (dispatch){
-        return axios.get('http://localhost:3001/dogs?name=' + name)
-                    .then(res => dispatch({ type: GET_BY_NAME, payload: res.data }))
-                    .catch(err => dispatch({type: GET_BY_NAME, payload: err.data}))
-        
+        return await axios('http://localhost:3001/dogs?name=' + name)
+            .then(res => dispatch({
+                type: GET_BY_NAME, 
+                payload: res.data
+            }))
+            .catch(err => dispatch({
+                type: GET_BY_NAME, 
+                payload: err.data
+            }))
     }
 }
 

@@ -80,6 +80,11 @@ function validation (input){
     } else if (input.life_span >= 50){
         errors.life_span = "Unfortunately your breed cannot be so long-lived"
         // return errors
+    } else {
+        errors.life_span = ""
+    }
+    if (!input.image.length){
+        errors.image = "You must write a url with a image"
     }
     return errors
 }
@@ -99,7 +104,7 @@ export default function Create () {
         weightMax: "",
         life_span: "",
         image: "",
-        temperaments: []
+        temperament: []
     }) 
 
 
@@ -120,20 +125,22 @@ export default function Create () {
     }
 
     function handleSelect(e){
-        setInput({
-            ...input,
-            temperaments: [...input.temperaments, e.target.value]
-        })
+        if (!input.temperament.includes(e.target.value)){
+            setInput({
+                ...input,
+                temperament: [...input.temperament, e.target.value]
+            })
+        }
     }
 
     function handleDelete(e){
         setInput({
             ...input,
-            temperaments: input.temperaments.filter(t => t !== e)
+            temperament: input.temperament.filter(t => t !== e)
         })
     }
 
-    function handleSubmit(e){
+    async function handleSubmit(e){
         e.preventDefault()
         if (
             !errors.name &&
@@ -142,25 +149,26 @@ export default function Create () {
             !errors.weightMin &&
             !errors.weightMax &&
             !errors.life_span &&
+            !errors.image &&
             input.name &&
             input.heightMin &&
             input.weightMin
-        ){
-            alert("Your breed has created successfully!")
-            dispatch(postDog(input))
-            setInput({
-                name: "",
-                heightMin: "",
-                heightMax: "",
-                weightMin: "",
-                weightMax: "",
-                life_span: "",
-                image: "",
-                temperaments: []
-            })
-        } else {
+            ){
+                alert("Your breed has created successfully!")
+                dispatch(postDog(input))
+                setInput({
+                    name: "",
+                    heightMin: "",
+                    heightMax: "",
+                    weightMin: "",
+                    weightMax: "",
+                    life_span: "",
+                    image: "",
+                    temperament: []
+                })
+            } else {
             alert("Missing info to create the breed")
-        }
+            }
     }
 
 
@@ -261,6 +269,9 @@ export default function Create () {
                         name="image"
                         onChange={e => handleChange(e)}
                     />
+                    {
+                        errors.image && <p className={styles.errors}><strong>{errors.image}</strong></p>
+                    }
                 </div>
                 <div>
                     <label><strong>Temperaments: </strong></label>
@@ -282,7 +293,7 @@ export default function Create () {
                         }
                     </select>
                     {
-                        input.temperaments.map(t => (
+                        input.temperament.map(t => (
                             <div className={styles.deleted} key={t}>
                                 <p>{t}</p>
                                 <button onClick={() => handleDelete(t)}>x</button>

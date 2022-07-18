@@ -7,6 +7,7 @@ import styles from "./Home.module.css"
 import HomeTitle from "../HomeTitle/HomeTitle"
 import SearchBar from "../SearchBar/SearchBar"
 import Card from "../Card/Card"
+import Pagination from "../Pagination/Pagination";
 
 
 export default function Home () {
@@ -16,7 +17,15 @@ export default function Home () {
 
     const [/*_orden*/, setOrder] = useState("")
 
-    //PAGINADO
+    const [currentPage, setCurrentPage] = useState(1)
+    const [dogsPerPage, /*setDogPerPage*/] = useState(8)
+    const indexLastDog = currentPage * dogsPerPage
+    const indexFirstDog = indexLastDog - dogsPerPage
+    const currentDogs = allDogs.slice(indexFirstDog, indexLastDog)
+    
+    const paginated = (pageNumber) => {
+        setCurrentPage(pageNumber)
+    }
 
     useEffect(() => {
         dispatch(getDogs())
@@ -26,28 +35,33 @@ export default function Home () {
 
     function handleClick(e){
         e.preventDefault()
+        setCurrentPage(1)
         dispatch(getDogs())
     }
 
     function handleTempFilter(e){
         e.preventDefault()
+        setCurrentPage(1)
         dispatch(filterByTemperament(e.target.value))
     }
 
     function handleOriginFilter(e){
         e.preventDefault()
+        setCurrentPage(1)
         dispatch(filterByOrigin(e.target.value))
     }
 
     function handleNameSort(e){
         e.preventDefault()
         dispatch(sortByName(e.target.value))
+        setCurrentPage(1)
         setOrder(`Order ${e.target.value}`)
     }
 
     function handleWeightSort(e){
         e.preventDefault()
         dispatch(sortByWeight(e.target.value))
+        setCurrentPage(1)
         setOrder(`Order ${e.target.value}`)
     }
 
@@ -109,10 +123,16 @@ export default function Home () {
                     <SearchBar />
                 </div>
             </div>
-            {/* paginated */}
+            <br /> <br />
+            <Pagination 
+                dogsPerPage={dogsPerPage} 
+                allDogs={allDogs.length} 
+                paginated={paginated} 
+            />
+            <br /> <br />
             <div className={styles.dogsContainer}>
                 {
-                    allDogs?.map(d => {
+                    currentDogs?.map(d => {
                         return (
                             <Link to={"/dogs/" + d.id}>
                                 <Card 

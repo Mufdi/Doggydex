@@ -9,7 +9,7 @@ export default function SearchBar () {
     const [name, setName] = useState("")
 
     function handleSearchChange (e){
-        e.preventDefault()
+        // e.preventDefault()
         setName(e.target.value)
     }
 

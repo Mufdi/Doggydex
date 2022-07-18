@@ -49,7 +49,6 @@ export default function rootReducer (state = initialState, action){
         case FILTER_BY_TEMPERAMENT:
             const allDogs = state.allDogs
             const temperamentFilter = action.payload === "all" ? allDogs : allDogs.filter(t => {
-                console.log(t.temperament);
                 if (typeof(t.temperament) === "string"){
                     return t.temperament.includes(action.payload)
                 } else if (Array.isArray(t.temperament)){
