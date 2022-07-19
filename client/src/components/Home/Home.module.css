@@ -1,9 +1,67 @@
-/* .home{
+.homeContainer{
+    display: flex;
+    /* height: 100vh; */
+    background-color: #fff;
+    background-image: url("../../resources/paw-1345885_640.png");
+    background-size: 200px;
+    background-repeat: repeat;
+    opacity: 90%;
+    animation: fadein 0.5s;
+}
 
+@keyframes fadein {
+    0% {
+    opacity:0;
+    }
+    10%{
+        opacity: 0.1;
+    }
+    20%{
+        opacity: 0.2;
+    }
+    30%{
+        opacity: 0.3;
+    }
+    40%{
+        opacity: 0.4;
+    }
+    50%{
+        opacity:0.5;
+    }
+    60%{
+        opacity: 0.6;
+    }
+    70%{
+        opacity: 0.7;
+    }
+    80%{
+        opacity: 0.8;
+    }
+    90%{
+        opacity: 0.9;
+    }
+    100% {
+        opacity:1;
+    }
+}
+
+.home{
+    /* height: 90vh; */
+    width: 90%;
+    max-width: 1600px;
+    margin: auto;
+    box-shadow: 0px 10px 10px black;
+    /* display: grid; */
+    /* grid-template-columns: repeat(10,1fr);
+    grid-template-rows: repeat(8,1fr); */
+    /* overflow: hidden; */
+    background-color: #f7f5e4;
+    animation: fadein 1s;
 }
 
 .menuContainer{
-
+    display: flex;
+    justify-content: space-around;
 }
 
 .menu{
@@ -19,6 +77,10 @@
 }
 
 .dogsContainer{
-
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 300px);
+    gap: 40px;
+    padding: 40px;
+    justify-content: center;
 }
- */
+

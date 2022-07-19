@@ -4,6 +4,7 @@ import styles from "./Card.module.css"
 export default function Card ({ name, weightMin, weightMax, image, temperament, temperaments }) {
     return (
         <div className={styles.container}>
+            <br />
             <h1 className={styles.name}>{name}</h1>
             <h3 className={styles.info}>
                 {

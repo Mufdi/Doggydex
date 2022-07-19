@@ -12,13 +12,13 @@ export default function Pagination ({ dogsPerPage, allDogs, paginated }) {
 }
 
     return (
-        <nav>
+        <nav className={styles.navPag}>
             <ul className={styles.paginated}>
                 {
                     pagesNumbers < 1 ? <h1> </h1> :
                     pagesNumbers.length && pagesNumbers.map(n => (
-                        <li key={n}>
-                            <button onClick={() => paginated(n)}><strong>{n}</strong></button>
+                        <li className={styles.liPag} key={n}>
+                            <button className={styles.paginatedLinks} onClick={() => paginated(n)}><strong>{n}</strong></button>
                         </li>
                     ))
                 }

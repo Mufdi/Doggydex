@@ -1,3 +1,12 @@
-/* .title{
+@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
 
-} */
+
+.title {
+    font-size: 3rem;
+    font-family: 'Monoton', cursive;
+    bottom: auto;
+}
+
+.title--transform{
+    font-family: 'Monoton', cursive;
+}

@@ -1,3 +1,42 @@
-/* .paginated{
+@import url('https://fonts.googleapis.com/css2?family=Sansita&display=swap');
 
-} */
+.paginatedLinks{
+    font-family: 'Sansita', sans-serif;
+}
+
+.paginatedLinks--transform{
+    font-family: 'Sansita', sans-serif;
+}
+
+.navPag{
+    /* display: flex;
+    justify-content: center; */
+}
+
+.paginated{
+    display: flex;
+    justify-content: center;
+}
+.liPag{
+    display: inline;
+    /* border-radius: 10px; */
+}
+
+.paginatedLinks{
+    cursor: pointer;
+    display: inline-block;
+    font-size: 1.1rem;
+    padding: 2px;
+    background-color: transparent;
+    border-radius: 7px;
+    list-style: none;
+    color: #270404;
+    padding: 8px 16px;
+    margin: 2px;
+  }
+  
+  .paginatedLinks:hover{
+    background-color: #808080;
+    color: black;
+  }
+  

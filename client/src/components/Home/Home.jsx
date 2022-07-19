@@ -72,88 +72,92 @@ export default function Home () {
     
     return (
         //spinner
-        <div className={styles.home}>
-            <HomeTitle />
-            <div className={styles.menuContainer}>
-                <div className={styles.menuElement}>
-                    <button className={styles.menuButton} onClick={e => handleClick(e)}>
-                        Clear filters
-                    </button>
+        <div className={styles.homeContainer}>
+            <div className={styles.home}>
+                <br />
+                <HomeTitle />
+                <br /> <br />
+                <div className={styles.menuContainer}>
+                    <div className={styles.menuElement}>
+                        <button className={styles.menuButton} onClick={e => handleClick(e)}>
+                            Clear filters
+                        </button>
+                    </div>
+                    <div className={styles.menuElement}>
+                        <select onChange={e => handleNameSort(e)}>
+                            <option value="withoutFilter" hidden>Sort by name</option>
+                            <option value="asc">A to Z</option>
+                            <option value="desc">Z to A</option>
+                        </select>
+                    </div>
+                    <div className={styles.menuElement}>
+                        <select onChange={e => handleWeightSort(e)}>
+                            <option value="withoutFilter" hidden>Sort by weight</option>
+                            <option value="asc">Light weight to heavy</option>
+                            <option value="desc">Heavy to light weight</option>
+                        </select>
+                    </div>
+                    <div className={styles.menuElement}>
+                        <select onChange={e => handleTempFilter(e)}>
+                            <option key={0} value ="all">Temperaments</option>
+                            {
+                                allTemperaments?.sort((a, b) => {
+                                    if (a.name > b.name) return 1
+                                    if (a.name < b.name) return -1
+                                    return 0
+                                }).map(t => {
+                                    return (
+                                        <option key={t.id} value={t.name}>{t.name}</option>
+                                    )
+                                })
+                            }
+                        </select>
+                    </div>
+                    <div className={styles.menuElement}>
+                        <select onChange={e => handleOriginFilter(e)}>
+                            <option value="all">All breeds</option>
+                            <option value="created">Created breeds</option>
+                            <option value="api">Existing breeds</option>
+                        </select>
+                    </div>
+                    <div className={styles.menuElement}>
+                        <Link to="/dogs/create">
+                            <button className={styles.menuButton}>Breed-creater</button>
+                        </Link>
+                    </div>
+                    <div className={styles.menuElement}>
+                        <SearchBar 
+                            setCurrentPage={setCurrentPage}
+                        />
+                    </div>
                 </div>
-                <div className={styles.menuElement}>
-                    <select onChange={e => handleNameSort(e)}>
-                        <option value="withoutFilter" hidden>Sort by name</option>
-                        <option value="asc">A to Z</option>
-                        <option value="desc">Z to A</option>
-                    </select>
+                <br />
+                <Pagination 
+                    dogsPerPage={dogsPerPage} 
+                    allDogs={allDogs.length} 
+                    paginated={paginated} 
+                />
+                <br />
+                <div className={styles.dogsContainer}>
+                    {
+                        status === 202 ? <NotFound /> :
+                        currentDogs?.map(d => {
+                            return (
+                                <Link to={"/dogs/" + d.id}>
+                                    <Card 
+                                        name={d.name}
+                                        weightMin={d.weightMin}
+                                        weightMax={d.weightMax}
+                                        image={d.image}
+                                        temperament={d.temperament} 
+                                        temperaments={d.temperaments}
+                                        key={d.id}
+                                    />
+                                </Link>
+                            )
+                        })
+                    }
                 </div>
-                <div className={styles.menuElement}>
-                    <select onChange={e => handleWeightSort(e)}>
-                        <option value="withoutFilter" hidden>Sort by weight</option>
-                        <option value="asc">Light weight to heavy</option>
-                        <option value="desc">Heavy to light weight</option>
-                    </select>
-                </div>
-                <div className={styles.menuElement}>
-                    <select onChange={e => handleTempFilter(e)}>
-                        <option key={0} value ="all">Temperaments</option>
-                        {
-                            allTemperaments?.sort((a, b) => {
-                                if (a.name > b.name) return 1
-                                if (a.name < b.name) return -1
-                                return 0
-                            }).map(t => {
-                                return (
-                                    <option key={t.id} value={t.name}>{t.name}</option>
-                                )
-                            })
-                        }
-                    </select>
-                </div>
-                <div className={styles.menuElement}>
-                    <select onChange={e => handleOriginFilter(e)}>
-                        <option value="all">All breeds</option>
-                        <option value="created">Created breeds</option>
-                        <option value="api">Existing breeds</option>
-                    </select>
-                </div>
-                <div className={styles.menuElement}>
-                    <Link to="/dogs/create">
-                        <button className={styles.menuButton}>Breed-creater</button>
-                    </Link>
-                </div>
-                <div className={styles.menuElement}>
-                    <SearchBar 
-                        setCurrentPage={setCurrentPage}
-                    />
-                </div>
-            </div>
-            <br /> <br />
-            <Pagination 
-                dogsPerPage={dogsPerPage} 
-                allDogs={allDogs.length} 
-                paginated={paginated} 
-            />
-            <br /> <br />
-            <div className={styles.dogsContainer}>
-                {
-                    status === 202 ? <NotFound /> :
-                    currentDogs?.map(d => {
-                        return (
-                            <Link to={"/dogs/" + d.id}>
-                                <Card 
-                                    name={d.name}
-                                    weightMin={d.weightMin}
-                                    weightMax={d.weightMax}
-                                    image={d.image}
-                                    temperament={d.temperament} 
-                                    temperaments={d.temperaments}
-                                    key={d.id}
-                                />
-                            </Link>
-                        )
-                    })
-                }
             </div>
         </div>
     )
