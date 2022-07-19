@@ -155,6 +155,7 @@ export default function Create () {
             input.weightMin
             ){
                 alert("Your breed has created successfully!")
+                // input.temperament = input.temperament.toString()
                 dispatch(postDog(input))
                 setInput({
                     name: "",

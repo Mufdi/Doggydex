@@ -8,21 +8,24 @@ import HomeTitle from "../HomeTitle/HomeTitle"
 import SearchBar from "../SearchBar/SearchBar"
 import Card from "../Card/Card"
 import Pagination from "../Pagination/Pagination";
+import NotFound from "../NotFound/NotFound";
 
 
 export default function Home () {
     const dispatch = useDispatch()
     const allDogs = useSelector(state => state.dogs)
     const allTemperaments = useSelector(state => state.temperaments)
+    const status = useSelector(state => state.status)
 
     const [/*_orden*/, setOrder] = useState("")
 
     const [currentPage, setCurrentPage] = useState(1)
+    console.log(currentPage);
     const [dogsPerPage, /*setDogPerPage*/] = useState(8)
     const indexLastDog = currentPage * dogsPerPage
     const indexFirstDog = indexLastDog - dogsPerPage
     const currentDogs = allDogs.slice(indexFirstDog, indexLastDog)
-    
+
     const paginated = (pageNumber) => {
         setCurrentPage(pageNumber)
     }
@@ -120,7 +123,9 @@ export default function Home () {
                     </Link>
                 </div>
                 <div className={styles.menuElement}>
-                    <SearchBar />
+                    <SearchBar 
+                        setCurrentPage={setCurrentPage}
+                    />
                 </div>
             </div>
             <br /> <br />
@@ -132,6 +137,7 @@ export default function Home () {
             <br /> <br />
             <div className={styles.dogsContainer}>
                 {
+                    status === 202 ? <NotFound /> :
                     currentDogs?.map(d => {
                         return (
                             <Link to={"/dogs/" + d.id}>
@@ -141,6 +147,7 @@ export default function Home () {
                                     weightMax={d.weightMax}
                                     image={d.image}
                                     temperament={d.temperament} 
+                                    temperaments={d.temperaments}
                                     key={d.id}
                                 />
                             </Link>

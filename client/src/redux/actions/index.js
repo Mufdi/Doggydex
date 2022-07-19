@@ -9,6 +9,7 @@ export const FILTER_BY_TEMPERAMENT = "FILTER_BY_TEMPERAMENT"
 export const FILTER_BY_ORIGIN = "FILTER_BY_ORIGIN"
 export const SORT_BY_NAME = "SORT_BY_NAME"
 export const SORT_BY_WEIGHT = "SORT_BY_WEIGHT"
+export const GET_BY_NAME_STATUS = "GET_BY_NAME_STATUS"
 
 
 export function getDogs (){
@@ -23,15 +24,23 @@ export function getDogs (){
 
 export function getDogsByName (name){
     return async function (dispatch){
-        return await axios('http://localhost:3001/dogs?name=' + name)
-            .then(res => dispatch({
-                type: GET_BY_NAME, 
-                payload: res.data
-            }))
-            .catch(err => dispatch({
-                type: GET_BY_NAME, 
-                payload: err.data
-            }))
+        try {
+            let data = await axios('http://localhost:3001/dogs?name=' + name)
+            if (data.status === 202){
+                return dispatch({
+                    type: GET_BY_NAME_STATUS, 
+                    payload: data.status
+                })
+            } else {
+                return dispatch({
+                    type: GET_BY_NAME, 
+                    payload: data.data
+                })
+            }
+            
+        } catch (error) {
+            console.log("err");
+        }
     }
 }
 
@@ -46,6 +55,7 @@ export function getTemperaments (){
 }
 
 export function postDog (payload){
+    console.log(payload);
     return async function (dispatch){
         var json = await axios.post(`http://localhost:3001/dogs/create`, payload)
         return dispatch ({
@@ -58,6 +68,10 @@ export function postDog (payload){
 export function getDetail (id){
     return async function (dispatch){
         var json = await axios(`http://localhost:3001/dogs/${id}`)
+        if (json.data.id.length === 36){
+            json.data.temperament = json.data.temperaments.map(t => t.name).toString().replaceAll(",", ", ")
+        }
+        console.log(json.data);
         return dispatch ({
             type: GET_DETAIL,
             payload: json.data
@@ -92,3 +106,10 @@ export function sortByWeight (payload){
         payload
     }
 }
+
+
+
+
+
+
+

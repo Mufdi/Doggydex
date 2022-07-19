@@ -7,7 +7,8 @@ import {
     FILTER_BY_TEMPERAMENT,
     FILTER_BY_ORIGIN,
     SORT_BY_NAME,
-    SORT_BY_WEIGHT 
+    SORT_BY_WEIGHT,
+    GET_BY_NAME_STATUS 
 } 
 from "../actions"
 
@@ -15,7 +16,8 @@ const initialState = {
     dogs: [],
     allDogs: [],
     temperaments: [],
-    details: []
+    details: [],
+    status: []
 }
 
 export default function rootReducer (state = initialState, action){
@@ -24,12 +26,20 @@ export default function rootReducer (state = initialState, action){
             return {
                 ...state,
                 dogs: action.payload,
-                allDogs: action.payload
+                allDogs: action.payload,
+                status: action.payload
             }
         case GET_BY_NAME:
             return {
                 ...state,
-                dogs: action.payload
+                dogs: action.payload,
+                status: action.payload
+            }
+        case GET_BY_NAME_STATUS:
+            return {
+                ...state,
+                status: action.payload,
+                dogs: []
             }
         case GET_TEMPERAMENTS:
             return {
@@ -51,8 +61,8 @@ export default function rootReducer (state = initialState, action){
             const temperamentFilter = action.payload === "all" ? allDogs : allDogs.filter(t => {
                 if (typeof(t.temperament) === "string"){
                     return t.temperament.includes(action.payload)
-                } else if (Array.isArray(t.temperament)){
-                    let temperamentArray = t.temperament.map(t => t.name)
+                } else if (Array.isArray(t.temperaments)){
+                    let temperamentArray = t.temperaments.map(t => t.name)
                     return temperamentArray.includes(action.payload)
                 }
                 return true

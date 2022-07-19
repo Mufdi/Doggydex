@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Card.module.css"
 
-export default function Card ({ name, weightMin, weightMax, image, temperament }) {
+export default function Card ({ name, weightMin, weightMax, image, temperament, temperaments }) {
     return (
         <div className={styles.container}>
             <h1 className={styles.name}>{name}</h1>
@@ -11,8 +11,8 @@ export default function Card ({ name, weightMin, weightMax, image, temperament }
                         if (typeof (temperament) === 'string'){
                             return temperament
                         }
-                        if (Array.isArray(temperament)){
-                            let tempArray = temperament.map(t => t.name)
+                        if (Array.isArray(temperaments)){
+                            let tempArray = temperaments.map(t => t.name)
                             return tempArray.join(', ')
                         }
                     }(temperament)

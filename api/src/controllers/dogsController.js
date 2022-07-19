@@ -11,12 +11,7 @@ async function getDogs (req, res){
             let dogSearched = await data.filter(d => d.name.toLowerCase().includes(name.toLowerCase()));
             dogSearched.length ?
                 res.status(201).send(dogSearched) :
-                res.send([{
-                    name: 'Dog not found',
-                    id: '', 
-                    weightMin: 'Try again or create your breed!',
-                    image: 'https://tenor.com/view/perro-feliz-thank-you-dogs-gif-9133996.gif'
-                }]);
+                res.status(202).send({msg: "err back"})
         } else{
             res.status(201).json(data)
         }

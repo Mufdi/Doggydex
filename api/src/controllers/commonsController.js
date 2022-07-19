@@ -22,7 +22,7 @@ async function getApiWeb () {
 }
 
 async function getApiDb () {
-    return await Dog.findAll({
+    let apiData = await Dog.findAll({
         include: {
             model: Temperament,
             attributes: ['name'],
@@ -31,6 +31,8 @@ async function getApiDb () {
             }
         }
     })
+    console.log(apiData);
+    return apiData
 }
 
 async function getAllApis () {
