@@ -15,7 +15,8 @@ async function getApiWeb () {
             weightMin: d.weight.metric.split(" - ")[0],
             weightMax: d.weight.metric.split(" - ")[1] ? d.weight.metric.split(" - ")[1] : d.weight.metric.split(" - ")[0],
             life_span: d.life_span,
-            temperament: d.temperament
+            temperament: d.temperament,
+            origin: d.origin
         }
     })
     return apiWebData
