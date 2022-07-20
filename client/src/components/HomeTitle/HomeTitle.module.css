@@ -2,11 +2,18 @@
 
 
 .title {
+    text-decoration: none;
     font-size: 3rem;
     font-family: 'Monoton', cursive;
     bottom: auto;
+    color: orange;
+}
+
+.title:hover{
+    opacity: 0.8;
 }
 
 .title--transform{
     font-family: 'Monoton', cursive;
+    color: #131313;
 }

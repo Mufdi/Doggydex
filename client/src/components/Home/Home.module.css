@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Sansita&display=swap');
+
+
 .homeContainer{
     display: flex;
     /* height: 100vh; */
@@ -6,7 +9,7 @@
     background-size: 200px;
     background-repeat: repeat;
     opacity: 90%;
-    animation: fadein 0.5s;
+    /* animation: fadein 0.5s; */
 }
 
 @keyframes fadein {
@@ -56,24 +59,146 @@
     grid-template-rows: repeat(8,1fr); */
     /* overflow: hidden; */
     background-color: #f7f5e4;
-    animation: fadein 1s;
+    animation: fadein 0.9s;
+    transition: all 300ms;
 }
 
 .menuContainer{
     display: flex;
     justify-content: space-around;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 .menu{
 
 }
 
-.menuElement{
+.menuElement {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 10px; 
+}
+
+
+
+.menuElement select {
+    font-family: 'Sansita', sans-serif;
+    background-color: #1abc9c;
+    color: #fff;
+    font-size: 1.1rem;
+    padding: .5em;
+    padding-right: 2.5em; 
+    border: 0;
+    margin: 0;
+    border-radius: 11px;
+    text-indent: 0.01px;
+    text-overflow: '';
+    text-align: center;
+    -webkit-appearance: button; 
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+
+.menuElement::before,
+.menuElement::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+}
+
+.menuElement::after { 
+    content: "\25BC";
+    height: 1em;
+    font-size: .625em;
+    line-height: 1;
+    right: 1.2em;
+    top: 50%;
+    margin-top: -.5em;
+}
+
+.menuElement::before { 
+    width: 2em;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border-radius: 11px;
+}
+
+.menuElement select[disabled] {
+    color: rgba(0,0,0,.3);
+}
+
+.menuElement select[disabled]::after {
+    color: rgba(0,0,0,.1);
+}
+
+.menuElement::before {
+background-color: rgba(0,0,0,.15);
+background-color: transparent;
 
 }
 
-.menuButton{
+.menuElement::after {
+        color: rgba(0,0,0,.4);
+}
 
+.menuElement:hover {
+    opacity: .7;
+}
+
+
+
+.menuButton {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 10px;
+    font-family: 'Sansita', sans-serif;
+    /* display: flex; */
+    /* flex-direction: row;
+    justify-content: center;
+    align-items: center; */
+    padding: 10px 28px;
+    border-radius: 11px;
+    border: 1px solid transparent;
+    color: #FFFFFF;
+    background-color: #1abc9c;
+    font-size: 16px;
+    letter-spacing: 1px;
+    transition: all 0.15s linear;
+    cursor: pointer;
+   }
+   
+   .menuButton:hover {
+    background-color: rgba(29, 201, 160, 0.08);
+    border-color: #1DC9A0;
+    color: #1DC9A0;
+    transform: translateY(-5px) scale(1.05);
+   }
+   
+   .menuButton:active {
+    background-color: transparent;
+    border-color: #1DC9A0;
+    color: #1DC9A0;
+    transform: translateY(5px) scale(0.95);
+   }
+   
+   .menuButton:disabled {
+    background-color: rgba(255, 255, 255, 0.16);
+    color: #8E8E93;
+    border-color: #8E8E93;
+   }
+
+.menuElementBut{
+
+}
+
+.menuElementSearch{
+    
 }
 
 .dogsContainer{
@@ -82,5 +207,7 @@
     gap: 40px;
     padding: 40px;
     justify-content: center;
+    /* animation: fadein 0.9s 0.8s;
+    transition: all 300ms; */
 }
 

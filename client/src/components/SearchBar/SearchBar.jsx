@@ -26,7 +26,7 @@ export default function SearchBar ({ setCurrentPage }) {
         <form className={styles.container}>
             <div className={styles.searchBox}>
                 <input 
-                    className={styles.input}
+                    className={styles.inputS}
                     type="text"
                     placeholder="Search a dog..."
                     onChange={e => handleSearchChange(e)}
@@ -35,7 +35,7 @@ export default function SearchBar ({ setCurrentPage }) {
                 <button 
                     className={styles.button}
                     type="submit"
-                    onClick={e => handleSubmit(e)}>
+                    onClick={e => handleSubmit(e)}> Search
                 </button>
             </div>
         </form>

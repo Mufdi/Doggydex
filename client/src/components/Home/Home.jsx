@@ -71,14 +71,18 @@ export default function Home () {
 
     
     return (
-        //spinner
         <div className={styles.homeContainer}>
             <div className={styles.home}>
                 <br />
                 <HomeTitle />
-                <br /> <br />
+                <br />
+                <div className={styles.menuElementSearch}>
+                        <SearchBar 
+                            setCurrentPage={setCurrentPage}
+                        />
+                </div>
                 <div className={styles.menuContainer}>
-                    <div className={styles.menuElement}>
+                    <div className={styles.menuElementBut}>
                         <button className={styles.menuButton} onClick={e => handleClick(e)}>
                             Clear filters
                         </button>
@@ -120,16 +124,12 @@ export default function Home () {
                             <option value="api">Existing breeds</option>
                         </select>
                     </div>
-                    <div className={styles.menuElement}>
+                    <div className={styles.menuElementBut}>
                         <Link to="/dogs/create">
-                            <button className={styles.menuButton}>Breed-creater</button>
+                            <button className={styles.menuButton}>Breed-creator</button>
                         </Link>
                     </div>
-                    <div className={styles.menuElement}>
-                        <SearchBar 
-                            setCurrentPage={setCurrentPage}
-                        />
-                    </div>
+                    
                 </div>
                 <br />
                 <Pagination 
