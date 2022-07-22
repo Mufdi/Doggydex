@@ -20,7 +20,6 @@ export default function Home () {
     const [/*_orden*/, setOrder] = useState("")
 
     const [currentPage, setCurrentPage] = useState(1)
-    console.log(currentPage);
     const [dogsPerPage, /*setDogPerPage*/] = useState(8)
     const indexLastDog = currentPage * dogsPerPage
     const indexFirstDog = indexLastDog - dogsPerPage

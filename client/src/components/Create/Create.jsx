@@ -9,17 +9,32 @@ import HomeTitle from "../HomeTitle/HomeTitle"
 
 function validation (input){
     let errors = {}
-    if (!input.name){
+    if (!input.name ||
+        !input.origin ||
+        !input.heightMin ||
+        !input.heightMax ||
+        !input.weightMin ||
+        !input.weightMax ||
+        !input.life_span ||
+        !input.image){
+         errors.default = "Please complete all fields and select a temperament"
+         return errors
+        }
+    if (!input.name.trim()){
         errors.name = "You must write a name"
         return errors
-    } else if (input.name.length > 20){
+    } else if (input.name.length > 30){
         errors.name = "The name is too long"
         return errors
-    } else {
-        errors.name = ""
+    // } else {
+    //     errors.name = ""
     }
-    if (!input.heightMin){
-        errors.heightMin = "You must set the heigth"
+    if (!input.origin.trim()){
+        errors.origin = "You must write a origin"
+        return errors
+    }
+    if (!input.heightMin.trim()){
+        errors.heightMin = "You must set the min heigth"
         return errors
     } else if (isNaN(input.heightMin)){
         errors.heightMin = "You must write a number"
@@ -30,10 +45,13 @@ function validation (input){
     } else if (input.heightMin >= input.heightMax){
         errors.heightMin = "Min height cannot be greater or equal than the max height"
         return errors
-    } else {
-        errors.heightMin = ""
+    // } else {
+    //     errors.heightMin = ""
     }
-    if (isNaN(input.heightMax)){
+    if (!input.heightMax.trim()){
+        errors.heightMax = "You must set the max heigth"
+        return errors
+    } else if (isNaN(input.heightMax)){
         errors.heightMax = "You must write a number"
         return errors
     } else if (input.heightMax >= 201){
@@ -42,11 +60,11 @@ function validation (input){
     } else if (input.heightMax <= input.heightMin){
         errors.heightMax = "Max height cannot be less than or equal to min height"
         return errors
-    } else {
-        input.heightMax = ""
+    // } else {
+    //     errors.heightMax = ""
     }
-    if (!input.weightMin){
-        errors.weightMin = "You must set a weight"
+    if (!input.weightMin.trim()){
+        errors.weightMin = "You must set a min weight"
         return errors
     } else if (isNaN(input.weightMin)){
         errors.weightMin = "You must write a number"
@@ -57,10 +75,13 @@ function validation (input){
     } else if (input.weightMin >= input.weightMax){
         errors.weightMin = "Min weight cannot be greater or equal than the max weight"
         return errors
-    } else {
-        errors.weightMin = ""
+    // } else {
+    //     errors.weightMin = ""
     }
-    if (isNaN(input.weightMax)){
+    if (!input.weightMax.trim()){
+        errors.weightMax = "You must set a max weight"
+        return errors
+    } else if (isNaN(input.weightMax)){
         errors.heightMax = "You must write a number"
         return errors
     } else if (input.weightMax >= 200){
@@ -69,8 +90,8 @@ function validation (input){
     } else if (input.weightMax <= input.weightMin){
         errors.weightMax = "Max weight cannot be less than or equal to min weight"
         return errors
-    } else {
-        errors.weightMax = ""
+    // } else {
+    //     errors.weightMax = ""
     }
     if (isNaN(input.life_span)){
         errors.life_span = "You must write a number"
@@ -81,11 +102,12 @@ function validation (input){
     } else if (input.life_span >= 50){
         errors.life_span = "Unfortunately your breed cannot be so long-lived"
         return errors
-    } else {
-        errors.life_span = ""
+    // } else {
+    //     errors.life_span = ""
     }
-    if (!input.image.length){
+    if (!input.image.trim()){
         errors.image = "You must write a url with a image"
+        return errors
     }
     return errors
 }
@@ -105,6 +127,7 @@ export default function Create () {
         weightMax: "",
         life_span: "",
         image: "",
+        origin: "",
         temperament: []
     }) 
 
@@ -151,6 +174,8 @@ export default function Create () {
             !errors.weightMax &&
             !errors.life_span &&
             !errors.image &&
+            !errors.origin &&
+            input.temperament.length > 0 &&
             input.name &&
             input.heightMin &&
             input.weightMin
@@ -166,6 +191,7 @@ export default function Create () {
                     weightMax: "",
                     life_span: "",
                     image: "",
+                    origin: "",
                     temperament: []
                 })
             } else {
@@ -182,14 +208,16 @@ export default function Create () {
                 <div className={styles.homeT}>
                     <HomeTitle />
                 </div>
-                {/* <br /> */}
                 <div className={styles.container3}>
                     <div className={styles.container4}>
                         <h1 className={styles.titleC}>Create your own breed!</h1>
-                        <br />
+                        {/* <br /> */}
                         <form onSubmit={e => handleSubmit(e)}>
                             <div className={styles.form}>
                                 <div>
+                                    {
+                                        errors.default && <p className={styles.errors}><strong>{errors.default}</strong></p>
+                                    }
                                     <label className={styles.labels}><strong>Name: </strong></label>
                                     <input
                                         className={styles.input}
@@ -200,6 +228,19 @@ export default function Create () {
                                     />
                                     {
                                         errors.name && <p className={styles.errors}><strong>{errors.name}</strong></p>
+                                    }
+                                </div>
+                                <div>
+                                    <label className={styles.labels}><strong>Origin: </strong></label>
+                                    <input
+                                        className={styles.input}
+                                        type="text"
+                                        value={input.origin}
+                                        name="origin"
+                                        onChange={e => handleChange(e)}
+                                    />
+                                    {
+                                        errors.origin && <p className={styles.errors}><strong>{errors.origin}</strong></p>
                                     }
                                 </div>
                                 <div>
@@ -314,7 +355,7 @@ export default function Create () {
                                         ))
                                     }
                                 </div>
-                                <br/> <br />
+                                <br/>
                                 <div className={styles.buttonsContainer}>
                                     <Link to="/dogs" >
                                         <button className={styles.buttons}>Cancel</button>

@@ -13,12 +13,14 @@ export const GET_BY_NAME_STATUS = "GET_BY_NAME_STATUS"
 
 
 export function getDogs (){
-    return async function (dispatch){
-        var json = await axios(`http://localhost:3001/dogs`)
-        return dispatch({
-            type: GET_DOGS,
-            payload: json.data
-        })
+    return function (dispatch){
+        return axios(`http://localhost:3001/dogs`)
+        .then(res => {
+            dispatch({
+                type: GET_DOGS,
+                payload: res.data
+            })
+        }) 
     }
 }
 

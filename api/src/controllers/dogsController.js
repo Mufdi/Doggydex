@@ -37,7 +37,7 @@ async function getById (req, res){
 
 
 async function createDog (req, res){
-    const { name, heightMax, heightMin, weightMax, weightMin, life_span, temperament, image } = req.body
+    const { name, heightMax, heightMin, weightMax, weightMin, life_span, temperament, image, origin } = req.body
     try {
         if (!image){
             image = await axios("https://dog.ceo/api/breeds/image/random").data.message
@@ -49,6 +49,7 @@ async function createDog (req, res){
             weightMax: weightMax, 
             weightMin: weightMin, 
             life_span: life_span, 
+            origin: origin,
             image: image || "https://dog.ceo/api/breeds/image/random"   
         })
         let temperaments = await Temperament.findAll({
