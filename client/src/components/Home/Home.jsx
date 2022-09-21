@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect} from "react"
 import { useDispatch, useSelector } from "react-redux" 
 import { Link } from "react-router-dom"
-import { filterByOrigin, filterByTemperament, getDogs, getTemperaments, sortByName, sortByWeight } from "../../redux/actions";
+import { clearState, filterByOrigin, filterByTemperament, getDogs, getTemperaments, sortByName, sortByWeight } from "../../redux/actions";
 import styles from "./Home.module.css"
 import HomeTitle from "../HomeTitle/HomeTitle"
 import SearchBar from "../SearchBar/SearchBar"
@@ -32,6 +32,7 @@ export default function Home () {
     useEffect(() => {
         dispatch(getDogs())
         dispatch(getTemperaments())
+        return ()=>dispatch(clearState())
     }, [dispatch])
 
 

@@ -10,6 +10,7 @@ export const FILTER_BY_ORIGIN = "FILTER_BY_ORIGIN"
 export const SORT_BY_NAME = "SORT_BY_NAME"
 export const SORT_BY_WEIGHT = "SORT_BY_WEIGHT"
 export const GET_BY_NAME_STATUS = "GET_BY_NAME_STATUS"
+export const CLEAR = "CLEAR"
 
 
 export function getDogs (){
@@ -106,6 +107,12 @@ export function sortByWeight (payload){
     return {
         type: SORT_BY_WEIGHT,
         payload
+    }
+}
+
+export function clearState (){
+    return {
+        type:CLEAR
     }
 }
 

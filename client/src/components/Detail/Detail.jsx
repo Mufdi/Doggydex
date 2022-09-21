@@ -13,14 +13,13 @@ export default function Detail (props) {
 
     useEffect(() => {
         dispatch(getDetail(props.match.params.id))
-    }, /*[dispatch]*/)
+    }, [dispatch])
     
     const selectedDog = useSelector(state => state.details)
     
     return (
         selectedDog.length === 0 ?
         <Spinner /> :
-        //spinner
         <div className={styles.containerDetails}>
             <div className={styles.container2}>
                 <br />

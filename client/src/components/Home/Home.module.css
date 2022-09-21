@@ -59,8 +59,8 @@
     grid-template-rows: repeat(8,1fr); */
     /* overflow: hidden; */
     background-color: #f7f5e4;
-    animation: fadein 0.9s;
-    transition: all 300ms;
+    animation: fadein 0.3s;
+    transition: all 0.2ms;
 }
 
 .menuContainer{
@@ -70,9 +70,6 @@
     margin-right: 10%;
 }
 
-.menu{
-
-}
 
 .menuElement {
     position: relative;
@@ -193,13 +190,6 @@ background-color: transparent;
     border-color: #8E8E93;
    }
 
-.menuElementBut{
-
-}
-
-.menuElementSearch{
-    
-}
 
 .dogsContainer{
     display: grid;

@@ -8,7 +8,8 @@ import {
     FILTER_BY_ORIGIN,
     SORT_BY_NAME,
     SORT_BY_WEIGHT,
-    GET_BY_NAME_STATUS 
+    GET_BY_NAME_STATUS,
+    CLEAR
 } 
 from "../actions"
 
@@ -105,6 +106,11 @@ export default function rootReducer (state = initialState, action){
             return {
                 ...state,
                 dogs: sortedWeight
+            }
+        case CLEAR:
+            return {
+                ...state,
+                details:[]
             }
 
         default:

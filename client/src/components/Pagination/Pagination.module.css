@@ -40,3 +40,12 @@
     color: black;
   }
   
+  /* .paginatedLinks:active{
+    background-color: #808080;
+    color: black;
+  } */
+
+  .paginatedLinks:focus{
+    background-color: #808080;
+    color: black;
+  }
