@@ -1,10 +1,10 @@
-const PORT = 8081 
-const DB_USER = "postgres"
-const DB_PASSWORD = "X9pOTXtlM08Y4elXqjJT" 
-const DB_HOST = "containers-us-west-45.railway.app" 
-const DB_NAME = "railway" 
-const DB_PORT = 6231
-const API_KEY = '3cb6b302-54e6-465c-9fc7-99e4a6150ef3'
+const PORT = process.env.PORT || 3001
+const DB_USER = process.env.DB_USER || 'mufdidev'
+const DB_PASSWORD = process.env.DB_PASSWORD || '12345'
+const DB_HOST = process.env.DB_HOST || 'localhost'
+const DB_NAME = process.env.DB_NAME || 'dogs'
+const DB_PORT = process.env.DB_PORT || '5432'
+const API_KEY = process.env.API_KEY || '3cb6b302-54e6-465c-9fc7-99e4a6150ef3'
  
 
 
