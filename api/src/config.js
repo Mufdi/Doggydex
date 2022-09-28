@@ -1,9 +1,9 @@
-const PORT = process.env.PORT 
-const DB_USER = process.env.DB_USER
-const DB_PASSWORD = process.env.DB_PASSWORD 
-const DB_HOST = process.env.DB_HOST 
-const DB_NAME = process.env.DB_NAME 
-const DB_PORT = process.env.DB_PORT 
+const PORT = 8081 
+const DB_USER = "postgres"
+const DB_PASSWORD = "X9pOTXtlM08Y4elXqjJT" 
+const DB_HOST = "containers-us-west-45.railway.app" 
+const DB_NAME = "railway" 
+const DB_PORT = 6231
 const API_KEY = '3cb6b302-54e6-465c-9fc7-99e4a6150ef3'
  
 
