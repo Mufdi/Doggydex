@@ -4,7 +4,7 @@ const DB_PASSWORD = process.env.DB_PASSWORD || '12345'
 const DB_HOST = process.env.DB_HOST || 'localhost'
 const DB_NAME = process.env.DB_NAME || 'dogs'
 const DB_PORT = process.env.DB_PORT || '5432'
-const API_KEY = process.env.API_KEY || '3cb6b302-54e6-465c-9fc7-99e4a6150ef3'
+const API_KEY = '3cb6b302-54e6-465c-9fc7-99e4a6150ef3'
  
 
 
