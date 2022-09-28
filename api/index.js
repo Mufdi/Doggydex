@@ -1,3 +1,4 @@
+require('dotenv').config();
 //                       _oo0oo_
 //                      o8888888o
 //                      88" . "88
@@ -19,7 +20,7 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
-const { PORT } = require('./src/config.js')
+const { PORT } = process.env
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
