@@ -1,5 +1,6 @@
 import axios from "axios"
-import { API } from "../../config"
+require('dotenv').config();
+const { REACT_APP_API } = process.env
 
 export const GET_DOGS = "GET_DOGS"
 export const GET_BY_NAME = "GET_BY_NAME"
@@ -16,7 +17,7 @@ export const CLEAR = "CLEAR"
 
 export function getDogs (){
     return function (dispatch){
-        return axios(`${API}/dogs`)
+        return axios(`${REACT_APP_API}/dogs`)
         .then(res => {
             dispatch({
                 type: GET_DOGS,
@@ -29,7 +30,7 @@ export function getDogs (){
 export function getDogsByName (name){
     return async function (dispatch){
         try {
-            let data = await axios(`${API}/dogs?name=` + name)
+            let data = await axios(`${REACT_APP_API}/dogs?name=` + name)
             if (data.status === 202){
                 return dispatch({
                     type: GET_BY_NAME_STATUS, 
@@ -50,7 +51,7 @@ export function getDogsByName (name){
 
 export function getTemperaments (){
     return async function (dispatch){
-        var json = await axios(`${API}/temperaments`)
+        var json = await axios(`${REACT_APP_API}/temperaments`)
         return dispatch ({
             type: GET_TEMPERAMENTS,
             payload: json.data
@@ -61,7 +62,7 @@ export function getTemperaments (){
 export function postDog (payload){
     console.log(payload);
     return async function (dispatch){
-        var json = await axios.post(`${API}/dogs/create`, payload)
+        var json = await axios.post(`${REACT_APP_API}/dogs/create`, payload)
         return dispatch ({
             type: POST_DOG,
             payload: json.data
@@ -71,7 +72,7 @@ export function postDog (payload){
 
 export function getDetail (id){
     return async function (dispatch){
-        var json = await axios(`${API}/dogs/${id}`)
+        var json = await axios(`${REACT_APP_API}/dogs/${id}`)
         if (json.data.id.length === 36){
             json.data.temperament = json.data.temperaments.map(t => t.name).toString().replaceAll(",", ", ")
         }
