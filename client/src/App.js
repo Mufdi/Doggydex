@@ -7,7 +7,7 @@ import Detail from './components/Detail/Detail'
 
 function App() {
   return (
-    <Router>
+    <Router basename="/index.html">
       <div className="App">
         <Switch>
           <Route exact path= '/' component={Landing} />
