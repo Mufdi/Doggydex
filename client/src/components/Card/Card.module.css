@@ -2,7 +2,7 @@
 
 .container{
     border-radius: 23px 20px 20px 15px;
-    /* -moz-border-radius: 23px 20px 20px 15px; */
+    -moz-border-radius: 23px 20px 20px 15px;
     -webkit-border-radius: 23px 20px 20px 15px;
     border: 4px outset #000000;
     transition: all 300ms;
@@ -38,5 +38,5 @@
     width: 300px;
     height: 350px;
     object-fit: cover;
-    /* border-radius: 10px; */
+    border-radius: 10px;
 }
