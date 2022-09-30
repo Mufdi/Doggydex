@@ -11,7 +11,7 @@
     transition: all 100ms;
 }
 
-@–webkit-keyframes fadein {
+@webkit-keyframes fadein {
     0% {
     opacity:0;
     }
@@ -42,13 +42,13 @@
     90%{
         opacity: .9;
     }
-    100% {
+    /* 100% {
         opacity: 1;
-    }
+    } */
 }
 
 
-@–webkit-keyframes fadein2 {
+@webkit-keyframes fadein2 {
     0% {
     opacity:0;
     }
@@ -79,9 +79,9 @@
     90%{
         opacity: .9;
     }
-    100% {
+    /* 100% {
         opacity: 1;
-    }
+    } */
 }
 
 .containerLanding {
