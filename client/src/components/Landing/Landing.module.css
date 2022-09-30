@@ -16,34 +16,34 @@
     opacity:0;
     }
     10%{
-        opacity: 10%;
+        opacity: .1;
     }
     20%{
-        opacity: 20%;
+        opacity: .2;
     }
     30%{
-        opacity: 30%;
+        opacity: .3;
     }
     40%{
-        opacity: 40%;
+        opacity: .4;
     }
     50%{
-        opacity: 50%;
+        opacity: .5;
     }
     60%{
-        opacity: 60%;
+        opacity: .6;
     }
     70%{
-        opacity: 70%;
+        opacity: .7;
     }
     80%{
-        opacity: 80%;
+        opacity: .8;
     }
     90%{
-        opacity: 90%;
+        opacity: .9;
     }
     100% {
-        opacity: 100%;
+        opacity: 1;
     }
 }
 
