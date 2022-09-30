@@ -6,9 +6,9 @@
     background-image: url("../../resources/paw-1345885_640.png");
     background-size: 200px;
     background-repeat: repeat;
-    opacity: 90%;
-    animation: fadein 0.3s;
-    transition: all 100ms;
+    /* opacity: 90%; */
+    /* animation: fadein 0.3s; */
+    /* transition: all 100ms; */
 }
 
 @keyframes fadein {
