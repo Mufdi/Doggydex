@@ -74,11 +74,11 @@
     animation: show 1s 1.5s ease forwards;
 }
 
-@keyframes show{
+/* @keyframes show{
     to{
         clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
     }
-}
+} */
 
 @keyframes move{
     to{
@@ -122,11 +122,11 @@
     animation: but 1.5s 2s forwards;
   }
 
-  @keyframes but{
+  /* @keyframes but{
     to{
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     }
-  }
+  } */
   
   .buttonLand {
     --primary-color: #111;
