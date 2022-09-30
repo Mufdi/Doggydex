@@ -11,10 +11,10 @@
     transition: all 100ms;
 }
 
-@webkit-keyframes fadein {
-    0% {
+@keyframes fadein {
+    /* 0% {
     opacity:0;
-    }
+    } */
     10%{
         opacity: .1;
     }
@@ -48,7 +48,7 @@
 }
 
 
-@webkit-keyframes fadein2 {
+@keyframes fadein2 {
     0% {
     opacity:0;
     }
