@@ -37,13 +37,11 @@ export default function Detail (props) {
                     <div className={`${styles.col} ${styles.detail}`}>
                         <h1>{selectedDog.name}</h1>
                         <h2>{selectedDog.temperament}</h2>
-                        {/* <h3> */}
                             {   
                                 !selectedDog.origin ?  <h1> </h1> :
                                 
                                 <h3><strong>Origin: </strong>{selectedDog.origin}</h3>
                             }
-                        {/* </h3> */}
                         <h3><strong>Weight: </strong>{selectedDog.weightMin}kg - {selectedDog.weightMax}kg</h3>
                         <h3><strong>Height: </strong>{selectedDog.heightMin}cm - {selectedDog.heightMax}cm</h3>
                         <h3><strong>Life span: </strong>{selectedDog.life_span}</h3>

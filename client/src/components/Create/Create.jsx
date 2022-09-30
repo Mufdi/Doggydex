@@ -26,8 +26,6 @@ function validation (input){
     } else if (input.name.length > 30){
         errors.name = "The name is too long"
         return errors
-    // } else {
-    //     errors.name = ""
     }
     if (!input.origin.trim()){
         errors.origin = "You must write a origin"
@@ -45,8 +43,6 @@ function validation (input){
     } else if (input.heightMin >= input.heightMax){
         errors.heightMin = "Min height cannot be greater or equal than the max height"
         return errors
-    // } else {
-    //     errors.heightMin = ""
     }
     if (!input.heightMax.trim()){
         errors.heightMax = "You must set the max heigth"
@@ -60,8 +56,6 @@ function validation (input){
     } else if (input.heightMax <= input.heightMin){
         errors.heightMax = "Max height cannot be less than or equal to min height"
         return errors
-    // } else {
-    //     errors.heightMax = ""
     }
     if (!input.weightMin.trim()){
         errors.weightMin = "You must set a min weight"
@@ -75,8 +69,6 @@ function validation (input){
     } else if (input.weightMin >= input.weightMax){
         errors.weightMin = "Min weight cannot be greater or equal than the max weight"
         return errors
-    // } else {
-    //     errors.weightMin = ""
     }
     if (!input.weightMax.trim()){
         errors.weightMax = "You must set a max weight"
@@ -90,8 +82,6 @@ function validation (input){
     } else if (input.weightMax <= input.weightMin){
         errors.weightMax = "Max weight cannot be less than or equal to min weight"
         return errors
-    // } else {
-    //     errors.weightMax = ""
     }
     if (isNaN(input.life_span)){
         errors.life_span = "You must write a number"
@@ -102,8 +92,6 @@ function validation (input){
     } else if (input.life_span >= 50){
         errors.life_span = "Unfortunately your breed cannot be so long-lived"
         return errors
-    // } else {
-    //     errors.life_span = ""
     }
     if (!input.image.trim()){
         errors.image = "You must write a url with a image"
@@ -211,7 +199,6 @@ export default function Create () {
                 <div className={styles.container3}>
                     <div className={styles.container4}>
                         <h1 className={styles.titleC}>Create your own breed!</h1>
-                        {/* <br /> */}
                         <form onSubmit={e => handleSubmit(e)}>
                             <div className={styles.form}>
                                 <div>
