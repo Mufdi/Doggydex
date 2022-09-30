@@ -48,6 +48,42 @@
 }
 
 
+@keyframes fadein2 {
+    0% {
+    opacity:0;
+    }
+    10%{
+        opacity: .1;
+    }
+    20%{
+        opacity: .2;
+    }
+    30%{
+        opacity: .3;
+    }
+    40%{
+        opacity: .4;
+    }
+    50%{
+        opacity: .5;
+    }
+    60%{
+        opacity: .6;
+    }
+    70%{
+        opacity: .7;
+    }
+    80%{
+        opacity: .8;
+    }
+    90%{
+        opacity: .9;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 .containerLanding {
     height: 90vh;
     width: 90%;
@@ -59,7 +95,7 @@
     grid-template-rows: repeat(6,1fr);
     overflow: hidden;
     background-color: #f7f5e4;
-    animation: fadein 0.5s;
+    animation: fadein2 0.5s;
 }
 
 .containerLanding::before{
