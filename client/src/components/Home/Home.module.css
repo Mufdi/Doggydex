@@ -9,7 +9,7 @@
     background-size: 200px;
     background-repeat: repeat;
     opacity: 90%;
-    /* animation: fadein 0.5s; */
+    animation: fadein 0.5s;
 }
 
 @keyframes fadein {
@@ -59,8 +59,8 @@
     grid-template-rows: repeat(8,1fr); */
     /* overflow: hidden; */
     background-color: #f7f5e4;
-    /* animation: fadein 0.3s; */
-    transition: all 0.2ms;
+    animation: fadein 0.3s;
+    /* transition: all 0.2ms; */
 }
 
 .menuContainer{

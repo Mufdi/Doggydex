@@ -9,8 +9,8 @@
     background-size: 200px;
     background-repeat: repeat;
     opacity: 90%;
-    /* animation: fadein 0.3s; */
-    transition: all 0.2ms;
+    animation: fadein 0.3s;
+    /* transition: all 0.2ms; */
 }
 
 @keyframes fadein {
@@ -58,7 +58,7 @@
     display: grid;
     overflow: hidden;
     background-color: #f7f5e4;
-    /* animation: fadein 0.3s; */
+    animation: fadein 0.3s;
     background-image: url("../../resources/dog-4450311_1280.png");
     background-repeat: no-repeat;
     background-position: left;
