@@ -33,6 +33,9 @@
     color: #270404;
     padding: 8px 16px;
     margin: 2px;
+    border: 2px outset #CCCCCC;
+    border-style: outset;
+    border-width: 2px;
   }
   
   .paginatedLinks:hover{

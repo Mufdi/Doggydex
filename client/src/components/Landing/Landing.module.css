@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
 
 .contLanding{
     display: flex;
@@ -93,11 +94,12 @@
 .titleLand {
     font-size: 4rem;
     font-family: 'Monoton', cursive;
-    color: #131313;
+    color: #383838;
 }
 
 .titleLand--transform{
     font-family: 'Monoton', cursive;
+    /* color: #131313; */
 }
 
 .cont{

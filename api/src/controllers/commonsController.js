@@ -39,7 +39,7 @@ async function getApiDb () {
 async function getAllApis () {
     const apiWebInfo = await getApiWeb()
     const apiDbInfo = await getApiDb()
-    const allApis = apiDbInfo.concat(apiWebInfo)
+    const allApis = apiWebInfo.concat(apiDbInfo)
     return allApis
 }
 

@@ -23,6 +23,9 @@
   /* border: 1px solid white; */
   background: rgb(255, 255, 255);
   color: #120404;
+  border: 1px inset #CCCCCC;
+  border-style: inset;
+  border-width: 1px;
 }
 
 .button{
