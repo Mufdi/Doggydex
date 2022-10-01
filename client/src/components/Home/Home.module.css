@@ -13,7 +13,7 @@
 }
 
 @keyframes fadein {
-    /* 0% { opacity: 0; } */
+    0% { opacity: 0; }
     10%{ opacity: 0.1; }
     20%{ opacity: 0.2; }
     30%{ opacity: 0.3; }
