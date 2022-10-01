@@ -7,11 +7,11 @@
     background-size: 200px;
     background-repeat: repeat;
     opacity: 90%;
-    animation: fadein 0.3s;
+    -webkit-animation: fadein 0.3s;
     transition: all 100ms;
 }
 
-@keyframes fadein {
+@–webkit-keyframes fadein {
     /* 0% {
     opacity:0;
     } */
@@ -48,7 +48,7 @@
 }
 
 
-@keyframes fadein2 {
+@–webkit-keyframes fadein2 {
     0% {
     opacity:0;
     }
