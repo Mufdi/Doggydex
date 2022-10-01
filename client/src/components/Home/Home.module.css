@@ -59,7 +59,7 @@
     grid-template-rows: repeat(8,1fr); */
     /* overflow: hidden; */
     background-color: #f7f5e4;
-    animation: fadein 0.3s;
+    /* animation: fadein 0.3s; */
     transition: all 0.2ms;
 }
 
